@@ -1,0 +1,21 @@
+package test03;
+
+/**
+ * Created by regis on 2017/4/20.
+ */
+public class Test {
+    public static void main(String[] args) {
+        Object lock = new Object();
+        ThreadA a = new ThreadA(lock);
+        a.start();
+        ThreadA b = new ThreadA(lock);
+        b.start();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        SynNotifyMethodThread c = new SynNotifyMethodThread(lock);
+        c.start();
+    }
+}

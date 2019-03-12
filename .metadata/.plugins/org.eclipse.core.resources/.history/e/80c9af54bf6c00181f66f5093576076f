@@ -1,0 +1,52 @@
+package Sort;
+
+public class QuickSort {
+	public static void quickSort(int[] a,int left,int right){
+		int mid = middle(a,left,right);
+		System.out.println(mid);
+		quickSort(a,left,mid);
+		quickSort(a,mid+1,right);
+	}
+
+	private static int middle(int[] a, int left, int right) {
+		int pm=left,lp=left,rp=right;
+		while(true){
+			int t=0;
+			if(a[lp]>a[pm]){
+				t=a[lp];
+				a[lp]=a[pm];
+				a[pm]=t;
+				
+				pm=lp;
+			}
+			//System.out.println(rp);
+			if(a[rp]>a[pm]){//Ô½½ç
+				t=a[rp];
+				a[rp]=a[pm];
+				a[pm]=t;
+				
+				pm=rp;
+			}
+			System.out.println(lp+" "+rp);
+			System.out.println("pm"+pm);
+			lp++;
+			rp--;
+			if(lp>rp){
+				break;
+			}
+		}
+		return pm;
+	}
+	
+
+
+	public static void main(String[] args) {
+		int[] a={3,4,5,2,7};
+		quickSort(a,0,4);
+		for(int i=0;i<5;i++){
+			System.out.println(a[i]);
+		}
+
+	}
+
+}

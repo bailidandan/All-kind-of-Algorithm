@@ -1,0 +1,31 @@
+package test03;
+
+public class te3 {
+	public static void main(String[] args) {
+		int a[]={2,3,5,6,1,4};
+		quickSort(a,0,a.length-1);
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i]+",");
+		}
+	}
+
+	private static void quickSort(int[] a,int start,int end) {
+		if(start>=end)return;
+		int i=start,j=end;
+		int target=a[start];
+		while (i<j) {
+			while(i<j&&a[j]>target)
+				j--;
+			if(a[j]<target){a[i]=a[j];}
+			while(i<j&&a[i]<target)
+				i++;
+			if(a[i]>target){a[j]=a[i];}
+		}
+		a[i]=target;
+		quickSort(a,start,i-1);
+		quickSort(a,i+1,end);
+		
+		
+	}
+
+}

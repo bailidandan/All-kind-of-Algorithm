@@ -1,0 +1,30 @@
+package test01;
+
+import java.util.Scanner;
+
+public class ex11 {
+	public static void main(String [] args){
+    	Scanner scan=new Scanner(System.in);
+      	String history=scan.nextLine();
+      	String sky=scan.nextLine();
+      	char[] h=history.toCharArray();
+      	
+      	
+      	for (int i = 0; i < h.length; i++) {
+			if(h[i]>='A'&&h[i]<='z'&&h[i]>='0'&&h[i]<='0')
+				h[i]='1';
+			else
+				h[i]='0';
+		}
+      	
+      	char[] s=sky.toCharArray();
+      	int sum=h.length;
+      	int equal=0;
+      	for (int i = 0; i < sum; i++) {
+      		if(h[i]==s[i])equal++;
+		}
+      	double com=equal/sum;
+      	System.out.println(com);
+    }
+
+}

@@ -1,0 +1,10 @@
+package test01;
+import java.security.cert.CollectionCertStoreParameters;
+import java.util.ArrayList;
+import java.util.Collections;
+public class ex1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> a=new ArrayList<Integer>();
+	}
+	Collections c=new CollectionCertStoreParameters();
+}

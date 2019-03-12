@@ -1,0 +1,27 @@
+package test02;
+
+import java.net.URL;
+import java.util.Scanner;
+
+public class ex2 {
+		public static void main(String[] args) {
+			Scanner scanner;
+			URL url;
+			Thread readURL;//Used to read resource as thread
+			Look look=new Look(); //aim object of thread
+			System.out.println(" ‰»ÎURL◊ ‘¥");
+			scanner =new Scanner(System.in);
+			String source = scanner.nextLine();
+			System.out.println(source);
+			try {
+				url=new URL(source);
+				look.setURL(url);
+				readURL=new Thread(look);
+				System.out.println("reach here");
+				readURL.start();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+
+}

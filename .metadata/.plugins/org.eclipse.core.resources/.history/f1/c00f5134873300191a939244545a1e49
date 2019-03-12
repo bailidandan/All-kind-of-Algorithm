@@ -1,0 +1,27 @@
+package test02;
+
+public class Solution {
+    static public boolean Find(int target, int [][] array) {
+    	int length =array.length;
+    	int width=array[0].length;
+    	boolean tell=false;
+    	int i=0;
+    	while (array[i][i]<=target&&i<length) {
+			i++;
+		}
+    	int j=0,j2=0;
+    	for (; j < array.length; j++) {
+			for (; j2 < array.length; j2++) {
+				if(array[j][j2]==target||j>=i||j2>=i)break;
+			}
+			if(array[j][j2]==target){
+				tell=true;break;
+				}
+		}
+    	return tell;
+    }
+    public static void main(String[] args) {
+    	int array[][]={{1,2},{3,4}};
+	System.out.println(Find(1,array));
+	}
+}

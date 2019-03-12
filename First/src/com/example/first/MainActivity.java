@@ -1,0 +1,86 @@
+package com.example.first;
+
+import java.io.*;
+
+import com.example.database.MyOpenHelper;
+import com.facebook.device.yearclass.YearClass;
+
+import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.provider.SyncStateContract.Helpers;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.*;
+
+public class MainActivity extends Activity {
+	private EditText etName,etAge,etScore;
+	private ListView lstStudent;
+	MyOpenHelper helper = new MyOpenHelper(this);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		init();
+		
+		int year = YearClass.get(getApplicationContext());
+		System.out.println(year);
+	}
+
+	private void init() {
+		etName = (EditText) findViewById(R.id.etName);
+		etAge = (EditText) findViewById(R.id.etAge);
+		etScore = (EditText) findViewById(R.id.etScore);
+		lstStudent = (ListView) findViewById(R.id.listStudent);
+	}
+
+	public void operator(View view) {
+		switch (view.getId()) {
+		case R.id.btnAdd:
+			insertStudent();
+			break;
+
+		case R.id.btnQuery:
+			
+			break;
+		default:
+			break;
+		}
+	}
+	private void insertStudent() {
+		SQLiteDatabase db = helper.getReadableDatabase();
+		String stuScore = etScore.getText().toString().trim();
+		String stuName = etName.getText().toString().trim();
+		ContentValues values = new ContentValues();
+		values.put("name", stuName);
+		values.put("score", stuScore);
+		long rowId = db.insert("Student", null, values);
+		if(rowId!=-1){
+			Toast.makeText(this, "数据插入成功", Toast.LENGTH_LONG).show();
+		}
+		db.close();
+	}
+
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}

@@ -1,0 +1,78 @@
+package test1;
+
+import java.util.Map;    
+import java.util.HashMap;    
+import java.util.Set;    
+import java.util.HashSet;    
+import java.util.Iterator;    
+import java.util.Hashtable;    
+import java.util.TreeMap;    
+import java.util.TreeSet;
+class  HashMaps    
+{    
+       public static void main(String[] args)     
+      {    
+            Map map=new HashMap();                
+            map.put("a", "aaa");    
+            map.put("b", "bbb");    
+            map.put("c", "ccc");    
+            map.put("d", "ddd");    
+               
+            Iterator iterator = map.keySet().iterator();                
+            while (iterator.hasNext()) {    
+             Object key = iterator.next();    
+             System.out.println("map.get(key) is :"+map.get(key));    
+            }
+            String km="a";
+            if(map.containsKey(km)){
+            	System.out.println("°üº¬£º"+km);
+            }
+                
+            System.out.println("--------------------------------------------");
+                
+            Hashtable tab=new Hashtable();                
+            tab.put("a", "aaa");    
+            tab.put("b", "bbb");    
+            tab.put("c", "ccc");    
+            tab.put("d", "ddd");    
+            Iterator iterator_1 = tab.keySet().iterator();    
+            while (iterator_1.hasNext()) {    
+             Object key = iterator_1.next();    
+             System.out.println("tab.get(key) is :"+tab.get(key));    
+            }             
+              
+            System.out.println("--------------------------------------------");
+            
+            TreeMap tmp=new TreeMap();                
+            tmp.put("a", "aaa");    
+            tmp.put("b", "bbb");    
+            tmp.put("c", "ccc");    
+            tmp.put("d", "ddd");    
+            Iterator iterator_2 = tmp.keySet().iterator();    
+            while (iterator_2.hasNext()) {    
+             Object key = iterator_2.next();    
+             System.out.println("tmp.get(key) is :"+tmp.get(key));    
+            }             
+                          
+            System.out.println("--------------------------------------------");
+            
+            HashSet set=new HashSet<>();
+            set.add("a");    
+            set.add("b");    
+            set.add("c");    
+            set.add("d");
+            Iterator iterator_3=set.iterator();
+            while (iterator_3.hasNext()) {    
+                    
+                System.out.println("set.get(key) is :"+iterator_3.next());    
+               }
+            
+            System.out.println("--------------------------------------------");
+            TreeSet ts=new TreeSet<>();
+            ts.add(1);
+            ts.add(3);
+            ts.add(2);
+            System.out.println(ts.last());
+       }    
+         
+}    

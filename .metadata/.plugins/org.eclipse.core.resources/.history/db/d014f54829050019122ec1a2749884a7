@@ -1,0 +1,18 @@
+package test;
+
+import java.util.Scanner;
+
+public class ex1 {
+	public static void main(String[] args) {
+		Scanner scan= new Scanner(System.in);
+		int a=scan.nextInt();
+		int b=scan.nextInt();
+		if(-100000<=a&&a<=b&&b<=100000){
+			if(a*b<0)System.out.println("-");
+			if(a*b>=0)System.out.println("+");
+		}else{
+			System.out.println("输入信息有错误");
+		}
+	}
+
+}

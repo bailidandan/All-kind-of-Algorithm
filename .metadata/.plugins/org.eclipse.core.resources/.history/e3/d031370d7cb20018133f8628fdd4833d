@@ -1,0 +1,33 @@
+package test01;
+
+import java.util.Scanner;
+
+public class ex9 {
+	public static void main(String[] args) {
+		Scanner scan=new Scanner(System.in);
+		int n=scan.nextInt();
+		int m=scan.nextInt();
+		int x=scan.nextInt();
+		int k=scan.nextInt();
+		int right=0;
+		int err=0;
+		int bottle;
+		for (int i = 0; i < n; i++) {
+			bottle=scan.nextInt();
+			if(bottle==1){
+				right++;
+			}
+		}
+		err=n-right;
+		System.out.println(right*(m-k)+err*(m-x)+min(err,right)*k);
+	
+	}
+
+	private static int min(int err, int right) {
+		if(right<=err)
+			return right;
+		else 
+			return err;
+	}
+
+}

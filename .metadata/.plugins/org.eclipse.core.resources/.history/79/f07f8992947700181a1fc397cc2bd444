@@ -1,0 +1,36 @@
+package test1;
+
+import java.util.Stack;
+
+public class ex6 {
+
+    public Stack stack;
+    public int swap(int x,int y){
+    	return x;
+    }
+    public void push(int node) {
+        stack.push(node);
+    }
+    
+    public void pop() {
+        stack.pop();
+    }
+    
+    public int top() {
+        return (int)stack.peek();
+    }
+    
+    public int min() {
+        int min=500;
+        int pop=0;
+        for (int i = 0; i < stack.size(); i++) {
+        	pop=(int) stack.pop();
+			if(pop<min){
+				pop=swap(min,min=pop);
+				stack.push(pop);
+			}
+		}
+        return min;
+        
+    }
+}

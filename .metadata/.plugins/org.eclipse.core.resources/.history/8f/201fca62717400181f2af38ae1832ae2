@@ -1,0 +1,18 @@
+package test1;
+
+public class HashCode {
+	class Person{
+		public String name;
+		public int age;
+		Person(String name,int age){
+			this.name=name;
+			this.age=age;
+		}
+	}
+	public static void main(String[] args) {
+		Person p11=new Person("张三",22);
+		Person p21=new Person("王五",23);
+		
+	}
+
+}

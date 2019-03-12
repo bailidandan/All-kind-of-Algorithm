@@ -1,0 +1,20 @@
+package test1;
+class Person{
+	public String name;
+	public int age;
+	Person(String name,int age){
+		this.name=name;
+		this.age=age;
+	}
+}
+public class HashCode {
+
+	public static void main(String[] args) {
+		Person p1=new Person("张三", 22);
+		Person p2=new Person("王五",23);
+		
+		System.out.println(p1.toString());
+		System.out.println(p2);
+	}
+
+}

@@ -1,0 +1,121 @@
+package test01;
+
+
+import java.util.Scanner;
+ 
+public class ex6 {
+ 
+	public static void main(String[] args) {
+		// TODO 自动生成的方法存根
+		int array[]= new int[5];
+		Scanner in=new Scanner(System.in);
+		for (int i = 0; i < array.length; i++) {
+			System.out.println("请输入第"+(i+1)+"个数");
+			array[i]=in.nextInt();
+			
+		}
+		SCAN(array, 5);
+	}
+ 
+	public static void SCAN(int array[],int m){
+		int i,j;
+		int temp;
+		int now,sum=0;
+		float avg=0;
+		for ( j = 0; j < array.length; j++) {
+			for(i=j+1;i<array.length;i++){
+				if(array[j]>array[i]){
+					temp=array[i];
+					array[i]=array[j];
+					array[j]=temp;
+				}
+			}
+			
+		}
+		Scanner in= new Scanner(System.in);
+		System.out.println("请输入当前磁道号");
+		now=in.nextInt();
+		System.out.println("请输入当前磁道方向1、0");
+		int d=in.nextInt();
+		if(array[m-1]<now){//如果当前磁道号大于所有磁道号
+			for(i=m-1;i>=0;i--){
+				System.out.print(array[i]+" ");
+				sum+=now-array[i];
+				now=array[i];
+			}
+		}
+		else{//当前磁道号在磁道号之间
+			if(array[0]>now)//小于所有磁道号
+			{
+				for(i=0;i<m;i++){
+					System.out.print(array[i]+" ");
+					sum+=array[i]-now;
+					now=array[i];
+				}
+			}
+			else{
+				int count=0;
+				int temp1;
+				int array1[]=new int[m+1];//创建新的数组来储存包括当前磁道号的值
+				for(int p=0;p<m;p++){
+					array1[p]=array[p];
+				}
+				array1[m]=now;
+				
+				for (int n = 0; n < array1.length-1; n++) {//冒泡排序所有磁道号
+					for (int n2 =n+1; n2 < array1.length; n2++) {
+						if(array1[n]>array1[n2]){
+							temp1=array1[n];
+							array1[n]=array1[n2];
+							array1[n2]=temp1;
+						}
+						
+					}
+					
+				}
+				for(int t=0;t<array1.length;t++){
+					if(array1[t]==now){//查找排序好的当前磁道号所在位置
+						count=t;
+						
+					}
+					
+				}
+				switch (d) {//选择顺序0为往小的走，1为大的走
+				case 0:
+					for(i=count-1;i>=0;i--){
+						System.out.print(array1[i]+" ");//遍历比当前磁道号小的的磁道
+						sum+=now-array1[i];
+						now=array1[i];
+					}
+					for(i=count+1;i<array1.length;i++){//遍历当前比磁道号大的磁道
+						System.out.print(array1[i]+" ");
+						sum+=array1[i]-now;
+						now=array1[i];
+					}
+					
+					break;
+				case 1:
+					for(i=count+1;i<array1.length;i++){//比磁道号大的磁道
+						System.out.print(array1[i]+" ");
+						sum+=array1[i]-now;
+						now=array1[i];
+					}
+					
+					for(i=count-1;i>=0;i--){//磁道号小的磁道
+						System.out.print(array1[i]+" ");
+						sum+=now-array1[i];
+						now=array1[i];
+						
+					}
+					
+					break;	
+			}
+			
+			
+		}}
+		 avg=(float) (sum/(m*1.0));
+		System.out.println("平均长度"+avg+" ");
+		
+	
+		}
+}

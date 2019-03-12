@@ -1,0 +1,17 @@
+package test02;
+
+public class Solution {
+    static public int Find(int target, int [][] array) {
+    	int length =array.length;
+    	int width=array[0].length;
+    	int i=0;
+    	while (array[i][i]<=target&&i<length) {
+			i++;
+		}
+    	return i;
+    }
+    public static void main(String[] args) {
+    	int array[][]={{1,2},{3,4}};
+	System.out.println(Find(1,array));
+	}
+}
